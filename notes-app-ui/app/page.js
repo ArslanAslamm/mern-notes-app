@@ -44,6 +44,7 @@ export default function Home() {
                 title={item.title}
                 desc={item.desc}
                 index={key}
+                key={key}
                 removeItem={removeItem}
               />
             );

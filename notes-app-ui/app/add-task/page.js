@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function Task() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [email, setEmail] = useState("");
 
   const saveData = (e) => {
     var existingData = JSON.parse(localStorage.getItem("tasks")) || [];
@@ -13,6 +14,7 @@ export default function Task() {
       ...existingData,
       {
         title,
+        email,
         desc,
       },
     ];
@@ -21,6 +23,7 @@ export default function Task() {
 
     setTitle("");
     setDesc("");
+    setEmail("");
     e.preventDefault();
   };
 
@@ -36,6 +39,14 @@ export default function Task() {
           placeholder="Task Title Here"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          className=" focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-300 rounded-md py-2 px-4 w-full"
+          placeholder="Email Address Here"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <textarea
